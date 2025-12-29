@@ -12,7 +12,7 @@ from typing import Any
 import psutil
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("dev-env-inspector", json_response=True)
+mcp = FastMCP("dev-env-mcp", json_response=True)
 
 
 @mcp.tool()
