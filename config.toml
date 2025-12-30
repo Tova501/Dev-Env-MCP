@@ -1,4 +1,0 @@
-[mcp_servers.dev_env_mcp]
-command = "python"
-args = ["-m", "dev_env_mcp.server", "--transport", "stdio"]
-cwd = "/ABS/PATH/TO/dev-env-mcp"
