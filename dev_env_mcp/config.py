@@ -13,11 +13,22 @@ MAX_STDOUT_CHARS = 80_000
 MAX_STDERR_CHARS = 80_000
 
 TIMEOUT_VENV_CREATE = 1800
-TIMEOUT_PIP_INSTALL = 6000
-TIMEOUT_PIP_UNINSTALL = 3000
-TIMEOUT_PIP_OTHER = 900
-TIMEOUT_PIP_FREEZE = 900
-TIMEOUT_PIP_IDLE_OTHER = 60
+
+# --- pip timeouts ---
+TIMEOUT_PIP_INSTALL = 1800      # 30 min safety net
+TIMEOUT_PIP_UNINSTALL = 600
+TIMEOUT_PIP_OTHER = 90
+TIMEOUT_PIP_FREEZE = 90
+TIMEOUT_PIP_IDLE_OTHER = 15     # only for list/show/check/freeze
+
+# --- soft verified-exit tuning (install/uninstall only) ---
+SOFT_VERIFY_START_AFTER_SEC = 8          # don't verify immediately
+SOFT_VERIFY_EVERY_SEC = 12              # normal verify cadence
+SOFT_VERIFY_FAST_EVERY_SEC = 2          # after "success-looking" output
+SOFT_VERIFY_GRACE_SEC = 12              # let pip exit naturally after verified
+SOFT_VERIFY_KILL_IF_NO_EXIT_AFTER_SEC = 15  # then kill tree
+VERIFY_SUBPROCESS_TIMEOUT_SEC = 20       # for env verification python -c
+
 
 # Allowlist of pip options. Keep strict to avoid “agent does too much”.
 ALLOWED_PIP_OPTIONS_PREFIXES = [
